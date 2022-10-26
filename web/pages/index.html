@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../css/main.css" />
+
+    <title>demo webpage</title>
+    <script type="text/javascript" src="/eel.js"></script> 
+  </head>
+  <body>
+  
+<script>
+function loadcontent(a){
+	document.getElementById('main').src = a;
+}
+
+</script>
+
+  <!-- header -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://inklab.usc.edu/index.html">CSCI 401 Project</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+ <div class="d-flex mb-3" style= "position: absolute; left: 0; height: 100%; width: 100%;">
+ 
+ 
+  <!-- navbar at the left -->
+  <aside class="p-2 bg-light">
+    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+       Input Number for direct visualization
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      <div class="row nav-row">
+      <button type="button" class="btn btn-light" onclick = "loadcontent('sentiment_analysis.html');"> Scope 1</button>
+      </div>
+      <div class="row nav-row">
+      <button type="button" class="btn btn-light" onclick = "loadcontent('hate_speech.html');" style = "margin-top:5px;">Scope 2</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</aside>
+
+    <!-- task at the right -->
+  <div class="p-2 flex-grow-1 bg-light">
+  <div class="d-flex justify-content-center" style = "height: 100%;">
+  <div class="card" style = "width:100%;">
+  <div class="card-body">
+  <iframe class="col-lg-12 col-md-12 col-sm-12" id = "main" src="welcome.html" style = "height:100%; overflow:auto;">
+ </iframe>
+</div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  </body>
+  <script src="../js/main.js"></script>
+  
+  
+</html>
