@@ -17,7 +17,7 @@ csv_path = "./policies.csv"
 eel.init('web')
 
 @eel.expose
-def get_policy_title(inputdata):
+def add_policy_title(inputdata):
     # logging input policy title to see if it works
     print(inputdata)
 
@@ -27,15 +27,46 @@ def get_policy_title(inputdata):
         "Title":[policy],
         "Overall_Score":[3]
         }
-    #write_json(entry)
+
+    # write to the csv file
     all_current_entry = read_csv(csv_path)
-    #write_to_db(policy)
+    print(all_current_entry)
     write_csv(csv_path,entry)
+
+    # renew read, and return targetted array
+    all_current_entry = read_csv(csv_path)
+    target_title = (inputdata)
+    target = ["Not Existing"]
+    for entry in all_current_entry:
+        if entry[0] == target_title:
+            target = entry
+            break
+
+    return target
+
+@eel.expose
+def get_policy_title(inputdata):
+    # logging input policy title to see if it works
+    print(inputdata)
+
+    policy = inputdata
+
+    # renew read, and return targetted array
+    all_current_entry = read_csv(csv_path)
+    target_title = (inputdata)
+    target = ["Not Existing"]
+    for entry in all_current_entry:
+        if entry[0] == target_title:
+            target = entry
+            break
+
+    return target
 
 # Json reading
 def read_json():
     with open(json_path, "rw") as file:
         data = json.load(file)
+        print(data)
 
 # Json appending
 def write_json(entry):
