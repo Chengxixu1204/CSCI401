@@ -62,6 +62,43 @@ def get_policy_title(inputdata):
 
     return target
 
+@eel.expose
+def get_policy_all():
+    # logging input policy title to see if it works
+
+    # renew read, and return targetted array
+    all_current_entry = read_csv(csv_path)
+    result = []
+    for entry in all_current_entry:
+        result.append(entry)
+
+    return result
+
+@eel.expose
+def delete_policy_title(inputdata):
+    # logging input policy title to see if it works
+    print(inputdata)
+
+    # renew read, check for existence
+    all_current_entry = read_csv(csv_path)
+    target_title = (inputdata)
+    target = ["Not Existing"]
+    for entry in all_current_entry:
+        if entry[0] == target_title:
+            target = entry
+            break
+
+    # If existing, delete and change message
+    if (target[0] != "Not Existing"):
+        delete_csv(csv_path,target_title)
+        target = ["Deleted"]
+   
+    # If not, remain unchanged
+    else:
+        target = ["Not Existing"]
+
+    return target
+
 # Json reading
 def read_json():
     with open(json_path, "rw") as file:
@@ -93,7 +130,7 @@ def write_csv(file_path,input):
         file.write('\n')
     df.to_csv(file_path,mode='a',index=False,header=False)
 
-# CSV Deleting
+# CSV Deleting by row
 def delete_csv(file_path,title):
     file = pd.read_csv(file_path)
     df = pd.DataFrame(file)
