@@ -77,4 +77,16 @@ async function policy_title_viewall()
     // clear policy viewing field
     document.getElementById("Current_Viewing_Policy_Title").innerText = " ";
     document.getElementById("Current_Viewing_Overall_Score").innerHTML = " ";
+
+    // update policies by populating a list in html
+    var test = document.getElementById("Testing_Ground")
+    var list = document.createElement(ul)
+    for (var i = 0; i < output.length; i++){
+        
+    }
+
+    test.appendChild(list)
+
+
+
 }
