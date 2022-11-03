@@ -1,7 +1,8 @@
 import eel
 import csv
 import mysql.connector
-import csv
+import sys
+import os
 import pandas as pd
 
 # Initial HTML Designs by Lindsey
@@ -10,9 +11,20 @@ hostname = "default-hostname"
 username = "default-servername"
 passcode = "default-password"
 
-csv_path = "./data/policies.csv"
+csv_relative_path = "data/policies.csv"
 
 eel.init('web')
+
+# Coping with PyInstaller file path things
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 @eel.expose
 def add_policy_title(inputdata):
@@ -27,6 +39,7 @@ def add_policy_title(inputdata):
         }
 
     # write to the csv file
+    csv_path = resource_path(csv_relative_path)
     all_current_entry = read_csv(csv_path)
     print(all_current_entry)
     write_csv(csv_path,entry)
@@ -50,6 +63,7 @@ def get_policy_title(inputdata):
     policy = inputdata
 
     # renew read, and return targetted array
+    csv_path = resource_path(csv_relative_path)
     all_current_entry = read_csv(csv_path)
     target_title = (inputdata)
     target = ["Not Existing"]
@@ -65,6 +79,8 @@ def get_policy_all():
     # logging input policy title to see if it works
 
     # renew read, and return targetted array
+    csv_path = resource_path(csv_relative_path)
+    print(csv_path)
     all_current_entry = read_csv(csv_path)
     result = []
     for entry in all_current_entry:
@@ -78,6 +94,7 @@ def delete_policy_title(inputdata):
     print(inputdata)
 
     # renew read, check for existence
+    csv_path = resource_path(csv_relative_path)
     all_current_entry = read_csv(csv_path)
     target_title = (inputdata)
     target = ["Not Existing"]
@@ -96,22 +113,6 @@ def delete_policy_title(inputdata):
         target = ["Not Existing"]
 
     return target
-
-# Json reading
-def read_json():
-    with open(json_path, "rw") as file:
-        data = json.load(file)
-        print(data)
-
-# Json appending
-def write_json(entry):
-    with open(json_path, "r") as file:
-        data = json.load(file)
-    
-    data.append(entry)
-
-    with open(json_path, "w") as file:
-        json.dump(data,file)
 
 # CSV Reading
 def read_csv(file_path):
