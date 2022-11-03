@@ -136,6 +136,8 @@ def delete_csv(file_path,title):
     df = pd.DataFrame(file)
     df.drop(df.index[(df["Title"]==title)],axis=0,inplace=True)
     print(df)
+    df.to_csv(file_path,index=False)
+        
 
 
 

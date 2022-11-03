@@ -15,6 +15,9 @@ async function policy_title_add()
     document.getElementById("Current_Viewing_Policy_Title").innerText = " ";
     document.getElementById("Current_Viewing_Overall_Score").innerHTML = " ";
 
+    // clear the other viewing field
+    clear_field(document.getElementById("Testing_Ground"))
+
     // update policy viewing field
     document.getElementById("Current_Viewing_Policy_Title").innerText = output[0];
     document.getElementById("Current_Viewing_Overall_Score").innerHTML = output[1];
@@ -36,6 +39,9 @@ async function policy_title_submit()
     // clear policy viewing field
     document.getElementById("Current_Viewing_Policy_Title").innerText = " ";
     document.getElementById("Current_Viewing_Overall_Score").innerHTML = " ";
+
+    // clear the other viewing field
+    clear_field(document.getElementById("Testing_Ground"))
     
     // update policy viewing field
     document.getElementById("Current_Viewing_Policy_Title").innerText = output[0];
@@ -58,6 +64,9 @@ async function policy_title_delete()
     // clear policy viewing field
     document.getElementById("Current_Viewing_Policy_Title").innerText = " ";
     document.getElementById("Current_Viewing_Overall_Score").innerHTML = " ";
+
+    // clear the other viewing field
+    clear_field(document.getElementById("Testing_Ground"))
 }
 
 // yet to implement populate whole list
@@ -78,6 +87,9 @@ async function policy_title_viewall()
     document.getElementById("Current_Viewing_Policy_Title").innerText = " ";
     document.getElementById("Current_Viewing_Overall_Score").innerHTML = " ";
 
+    // clear the other viewing field
+    clear_field(document.getElementById("Testing_Ground"))
+
     // update policies by populating a list in html
     var test = document.getElementById("Testing_Ground")
     var list = document.createElement('ul')
@@ -90,6 +102,10 @@ async function policy_title_viewall()
 
     test.appendChild(list)
 
+}
 
-
+function clear_field(parent){
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild)
+    }
 }
