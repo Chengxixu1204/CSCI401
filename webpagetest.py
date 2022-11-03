@@ -1,7 +1,6 @@
 import eel
 import csv
 import mysql.connector
-import json
 import csv
 import pandas as pd
 
@@ -11,8 +10,7 @@ hostname = "default-hostname"
 username = "default-servername"
 passcode = "default-password"
 
-json_path = "./policies.json"
-csv_path = "./policies.csv"
+csv_path = "./data/policies.csv"
 
 eel.init('web')
 
