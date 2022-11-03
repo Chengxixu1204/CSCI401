@@ -80,9 +80,12 @@ async function policy_title_viewall()
 
     // update policies by populating a list in html
     var test = document.getElementById("Testing_Ground")
-    var list = document.createElement(ul)
+    var list = document.createElement('ul')
     for (var i = 0; i < output.length; i++){
-        
+        var item = document.createElement('li')
+        var content = document.createTextNode(output[i])
+        item.appendChild(content)
+        list.appendChild(item)
     }
 
     test.appendChild(list)
