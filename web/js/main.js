@@ -1,3 +1,6 @@
+
+select_policy = '';
+
 async function policy_title_add()
 {
     // Get Input from form
@@ -44,8 +47,23 @@ async function policy_title_submit()
     clear_field(document.getElementById("Testing_Ground"))
     
     // update policy viewing field
-    document.getElementById("Current_Viewing_Policy_Title").innerText = output[0];
-    document.getElementById("Current_Viewing_Overall_Score").innerHTML = output[1];
+    // document.getElementById("Current_Viewing_Policy_Title").innerText = output[0];
+    // document.getElementById("Current_Viewing_Overall_Score").innerHTML = output[1];
+    var test = document.getElementById("Testing_Ground")
+    var list = document.createElement('ul')
+    for (var i = 0; i < output.length; i++){
+        var item = document.createElement('li')
+        item.class = 'result'
+        var content = document.createTextNode(output[i])
+        item.appendChild(content)
+        item.addEventListener("click", function(e){
+            document.getElementById("selected_value").innerHTML = e.target.innerHTML;
+        });
+        
+        list.appendChild(item)
+    }
+
+    test.appendChild(list)
 }
 
 async function policy_title_delete()

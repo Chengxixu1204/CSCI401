@@ -58,19 +58,18 @@ def add_policy_title(inputdata):
 @eel.expose
 def get_policy_title(inputdata):
     # logging input policy title to see if it works
-    print(inputdata)
 
     policy = inputdata
 
     # renew read, and return targetted array
     csv_path = resource_path(csv_relative_path)
     all_current_entry = read_csv(csv_path)
-    target_title = (inputdata)
-    target = ["Not Existing"]
+    target_title = inputdata.split(' ')
+    target = []
     for entry in all_current_entry:
-        if entry[0] == target_title:
-            target = entry
-            break
+        allwords = entry[0].split(' ')
+        if all(word in allwords for word in target_title):
+            target.append(entry[0])
 
     return target
 

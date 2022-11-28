@@ -1,3 +1,4 @@
-Title,Overall_Score
-First Default,5
-Second Default,4
+Title,Overall_Score,Overall_Comment,Governance_Score,Governance_Comment,Communication_Score,Standards_Score,Standards_Comment,Regulatory_Score,Regulatory_Comment,Fiscal_Score,Fiscal_Comment,Lifecycle_Score,Lifecycle_Comment,Validation_Score,Validation_Comment,Support_Score,Support_Comment,Procurement_Score,Procurement_Comment,Training_Score,Training_Comment,
+First Default,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, 
+second Default,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, 
+third second Default,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, 
