@@ -53,7 +53,7 @@ async function policy_title_submit()
     var list = document.createElement('ul')
     for (var i = 0; i < output.length; i++){
         var item = document.createElement('li')
-        item.class = 'result'
+        item.classList.add('result');
         var content = document.createTextNode(output[i])
         item.appendChild(content)
         item.addEventListener("click", function(e){
@@ -69,7 +69,13 @@ async function policy_title_submit()
 async function policy_title_delete()
 {
     // Get Input from form
-    var input = document.getElementById("policy-title").value;
+    var input = document.getElementById("selected_value").innerHTML;
+    console.log(input);
+
+    if(input.length == 0){
+        alert("No selected policy to delete");
+        return;
+    }
 
     // Send input to python script
     var output = await eel.delete_policy_title(input)();
@@ -77,14 +83,21 @@ async function policy_title_delete()
     console.log(output);
 
     // reset input field
-    document.getElementById("policy-title").value = "";
+    document.getElementById("selected_value").innerHTML = "";
 
     // clear policy viewing field
     document.getElementById("Current_Viewing_Policy_Title").innerText = " ";
     document.getElementById("Current_Viewing_Overall_Score").innerHTML = " ";
 
     // clear the other viewing field
-    clear_field(document.getElementById("Testing_Ground"))
+    // clear_field(document.getElementById("Testing_Ground"))
+    const collection = document.getElementsByClassName("result");
+    for (let i = 0; i < collection.length; i++) {
+        console.log(collection[i].innerHTML);
+        if(collection[i].innerHTML == input){
+            collection[i].parentNode.removeChild(collection[i]);
+        }
+    }
 }
 
 // yet to implement populate whole list
@@ -119,6 +132,19 @@ async function policy_title_viewall()
     }
 
     test.appendChild(list)
+
+}
+async function policy_title_export(){
+    var input = document.getElementById("selected_value").innerHTML;
+    var re = await eel.export_policy_title(input)();
+    var ans = "";
+    for(let i = 0; i < re.length; i++){
+        console.log(re[i])
+        ans += re[i];
+    }
+    var opened = window.open("");
+    opened.document.write("<html><head><title>ExportResult</title></head><body>"+ ans + "</body></html>");
+
 
 }
 

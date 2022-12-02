@@ -94,24 +94,36 @@ def delete_policy_title(inputdata):
 
     # renew read, check for existence
     csv_path = resource_path(csv_relative_path)
-    all_current_entry = read_csv(csv_path)
+    # all_current_entry = read_csv(csv_path)
     target_title = (inputdata)
-    target = ["Not Existing"]
-    for entry in all_current_entry:
-        if entry[0] == target_title:
-            target = entry
-            break
+    delete_csv(csv_path,target_title)
+    # target = ["Not Existing"]
+    # for entry in all_current_entry:
+    #     if entry[0] == target_title:
+    #         target = entry
+    #         break
 
     # If existing, delete and change message
-    if (target[0] != "Not Existing"):
-        delete_csv(csv_path,target_title)
-        target = ["Deleted"]
+    # if (target[0] != "Not Existing"):
+        
+    target = ["Deleted"]
    
     # If not, remain unchanged
-    else:
-        target = ["Not Existing"]
+    # else:
+    #     target = ["Not Existing"]
 
     return target
+@eel.expose
+def export_policy_title(inputdata):
+    csv_path = resource_path(csv_relative_path)
+    print(csv_path)
+    all_current_entry = read_csv(csv_path)
+    result = []
+    for entry in all_current_entry:
+        if entry[0] == inputdata:
+            result = entry
+            break
+    return result
 
 # CSV Reading
 def read_csv(file_path):
