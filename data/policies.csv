@@ -1,6 +1,3 @@
-Title,Overall_Score,Overall_Comment,Governance_Score,Governance_Comment,Communication_Score,Standards_Score,Standards_Comment,Regulatory_Score,Regulatory_Comment,Fiscal_Score,Fiscal_Comment,Lifecycle_Score,Lifecycle_Comment,Validation_Score,Validation_Comment,Support_Score,Support_Comment,Procurement_Score,Procurement_Comment,Training_Score,Training_Comment,Unnamed: 22
-third second Default,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, ,5, 
-four second Default,6, ,6, ,6, ,6, ,6, ,6, ,6, ,6, ,6, ,6, ,6, 
-qw second Default,7, ,7, ,7, ,7, ,7, ,7, ,7, ,7, ,7, ,7, ,7, 
-third 1 Default,8, ,8, ,8, ,8, ,8, ,8, ,8, ,8, ,8, ,8, ,8, 
-third we Default,9, ,9, ,9, ,9, ,9, ,9, ,9, ,9, ,9, ,9, ,9, 
+Title,Overall_Score,Overall_Comment,Governance_Score,Governance_Comment,Communication_Score,Communication_Comment,Standards_Score,Standards_Comment,Regulatory_Score,Regulatory_Comment,Fiscal_Score,Fiscal_Comment,Lifecycle_Score,Lifecycle_Comment,Validation_Score,Validation_Comment,Support_Score,Support_Comment,Procurement_Score,Procurement_Comment,Training_Score,Training_Comment,Unnamed: 22
+new default,5,goodi,0,x,0,x,0,x,0,x,0,x,0,x,0,x,0,x,0,x,1,good___2,x
+ee,5,ee,0,,0,,0,,0,,0,,0,,0,,0,,0,,0,,

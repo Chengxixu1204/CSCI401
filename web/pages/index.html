@@ -9,6 +9,11 @@
 
     <title>demo webpage</title>
     <script type="text/javascript" src="/eel.js"></script> 
+    <style>
+      #displayn{
+        margin: 20px;
+      }
+    </style>
   </head>
   <body>
   
@@ -47,13 +52,14 @@ function loadcontent(a){
   <!-- navbar at the left -->
   <aside class="p-2 bg-light">
     <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-       Input Number for direct visualization
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+  <div class="accordion-item" >
+    <!-- <h2 class="accordion-header" id="headingTwo">  -->
+      <h5 id = "displayn">Policy Search Result(Shown Below):</h5>
+      <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        
+      </button> -->
+    <!-- </h2> -->
+    <!-- <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
       <div class="row nav-row">
       <button type="button" class="btn btn-light" onclick = "loadcontent('sentiment_analysis.html');"> Scope 1</button>
@@ -62,9 +68,14 @@ function loadcontent(a){
       <button type="button" class="btn btn-light" onclick = "loadcontent('hate_speech.html');" style = "margin-top:5px;">Scope 2</button>
       </div>
     </div>
-  </div>
+  </div> -->
+  <div id="ntest"></div>
   </div>
 </div>
+<h4 class="card-policy" style="margin-top:20px;">Selected Policy:</h4>
+Policy Title:<h6 id="Current_Viewing_Policy_Title"></h6>
+      Overall Score: <p id="Current_Viewing_Overall_Score"></p>
+      Overall Comment: <p id="Current_Viewing_Overall_Comment"></p>
 </aside>
 
     <!-- task at the right -->

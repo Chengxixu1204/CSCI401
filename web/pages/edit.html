@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type='text/javascript' src='/eel.js'></script> 
+</head>
+<style>
+.child { 
+    float: left; 
+    width: 50%; 
+} 
+</style>
+
+<body>
+    <!-- nav -->
+    <!-- <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+    </ul> -->
+
+    <!-- intro -->
+    <div class="card">
+        <div class="card-body">
+            <div class = "child"> Policy title goes here 
+                <input type="text" class="form-control" placeholder="Policy Title" id="policytitle">
+            </div>
+            <div class = "child">Current score
+                <input type="text" class="form-control" placeholder="Current Total Score" id="policyscore">    
+            </div>
+            <div class = "child">Current Comment
+                <textarea type="text" class="form-control" placeholder="Current Comment" id="policycomment"></textarea>   
+            </div>
+        </div>
+    </div>
+
+    <!-- stuff -->
+
+
+    <div class="p-3 m-0 border-0 bd-example bg-light">
+        <form id = "nform">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Governance, Risk Management, & Compliance
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Governance, Risk Management, & Compliance</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se1" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Communications
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Communications</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se2" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Policies & Standards
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Policies & Standards</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se3" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Regulatory
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Regulatory</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se4" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Fiscal Management
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Fiscal Management</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se5" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Development Lifecycle
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Development Lifecycle</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea6" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se6" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Testing & Validation
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Testing & Validation</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea7" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se7" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Support & Documentation
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Support & Documentation</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea8" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se8" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>    
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Procurement
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Procurement</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea9" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se9" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>    
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Training
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <h1>Training</h1>
+                            <p>some introduction</p>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Comments: </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea10" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Scores: </label>
+                                    <select class="form-select" id = "se10" aria-label="Default select example">
+                                        <option value="0" selected>Choose from...</option>
+                                        <option value="1">Initial</option>
+                                        <option value="2">Managed</option>
+                                        <option value="3">Defined</option>
+                                        <option value="4">Quantitatively Managed</option>
+                                        <option value="5">Optimizing</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="mb-3" id = "submitb"> <input type="submit" value="Submit"></div>
+        </form>
+        
+
+    </div>
+
+
+    <!-- End Example Code -->
+<script>
+    var f = document.getElementById('nform');
+    f.onsubmit = function(e){
+        
+        Form_Submit()
+        e.preventDefault();
+    }
+
+</script>
+</body>
+
+</html>

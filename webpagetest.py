@@ -4,6 +4,7 @@ import mysql.connector
 import sys
 import os
 import pandas as pd
+import numpy as np
 
 # Initial HTML Designs by Lindsey
 
@@ -36,7 +37,7 @@ def add_policy_title(inputdata):
     entry = {
         "Title":[policy],
         "Overall_Score":[3]
-        }
+    }
 
     # write to the csv file
     csv_path = resource_path(csv_relative_path)
@@ -69,7 +70,12 @@ def get_policy_title(inputdata):
     for entry in all_current_entry:
         allwords = entry[0].split(' ')
         if all(word in allwords for word in target_title):
-            target.append(entry[0])
+            ans = entry[0]
+            ans += '&'
+            ans += str(entry[1])
+            ans += '&'
+            ans += entry[2]
+            target.append(ans)
 
     return target
 
@@ -113,6 +119,7 @@ def delete_policy_title(inputdata):
     #     target = ["Not Existing"]
 
     return target
+
 @eel.expose
 def export_policy_title(inputdata):
     csv_path = resource_path(csv_relative_path)
@@ -125,6 +132,140 @@ def export_policy_title(inputdata):
             break
     return result
 
+@eel.expose
+def import_policy_title(inputdata):
+    print(inputdata)
+    ndata = inputdata.split('\n')
+    csv_path = resource_path(csv_relative_path)
+    result = "n"
+    for data in ndata:
+        alldata = data.split(',')
+        if len(alldata) == 23 and alldata[0] != "Title":
+            entry = {
+                "Title":[alldata[0]],
+                "Overall_Score":[alldata[1]],
+                "Overall_Comment":[alldata[2]],
+                "Governance_Score":[alldata[3]],
+                "Governance_Comment":[alldata[4]],
+                "Communication_Score":[alldata[5]],
+                "Communication_Comment":[alldata[6]],
+                "Standards_Score":[alldata[7]],
+                "Standards_Comment":[alldata[8]],
+                "Regulatory_Score":[alldata[9]],
+                "Regulatory_Comment":[alldata[10]],
+                "Fiscal_Score":[alldata[11]],
+                "Fiscal_Comment":[alldata[12]],
+                "Lifecycle_Score":[alldata[13]],
+                "Lifecycle_Comment":[alldata[14]],
+                "Validation_Score":[alldata[15]],
+                "Validation_Comment":[alldata[16]],
+                "Support_Score":[alldata[17]],
+                "Support_Comment":[alldata[18]],
+                "Procurement_Score":[alldata[19]],
+                "Procurement_Comment":[alldata[20]],
+                "Training_Score":[alldata[21]],
+                "Training_Comment":[alldata[22]],
+                "Unnamed":[alldata[23]]
+            }
+            write_csv(csv_path,entry)
+    return result
+
+@eel.expose
+def Form_Submit(policyt,policys,policyc,govt,govs,commt,comms,stdt,stds,regt,regs,fiscalt,fiscals,lifet,lifes,testt,tests,suppt,supps,procuret,procures,trainingt,trainings):
+    csv_path = resource_path(csv_relative_path)
+    file = pd.read_csv(csv_path)
+    df = pd.DataFrame(file)
+
+    print("Submitting")
+
+    out = []
+    df.loc[df.Title==policyt,"Title"] = policyt
+    df.loc[df.Title==policyt,"Overall_Score"] = policys
+    df.loc[df.Title==policyt,"Overall_Comment"] = policyc
+    df.loc[df.Title==policyt,"Governance_Score"] = govs
+    df.loc[df.Title==policyt,"Governance_Comment"] = govt
+    df.loc[df.Title==policyt,"Communication_Score"] = comms
+    df.loc[df.Title==policyt,"Communication_Comment"] = commt
+    df.loc[df.Title==policyt,"Standards_Score"] = stds
+    df.loc[df.Title==policyt,"Standards_Comment"] = stdt
+    df.loc[df.Title==policyt,"Regulatory_Score"] = regs
+    df.loc[df.Title==policyt,"Regulatory_Comment"] = regt
+    df.loc[df.Title==policyt,"Fiscal_Score"] = fiscals
+    df.loc[df.Title==policyt,"Fiscal_Comment"] = fiscalt
+    df.loc[df.Title==policyt,"Lifecycle_Score"] = lifes
+    df.loc[df.Title==policyt,"Lifecycle_Comment"] = lifet
+    df.loc[df.Title==policyt,"Validation_Score"] = tests
+    df.loc[df.Title==policyt,"Validation_Comment"] = testt
+    df.loc[df.Title==policyt,"Support_Score"] = supps
+    df.loc[df.Title==policyt,"Support_Comment"] = suppt
+    df.loc[df.Title==policyt,"Procurement_Score"] = procures
+    df.loc[df.Title==policyt,"Procurement_Comment"] = procuret
+    df.loc[df.Title==policyt,"Training_Score"] = trainings
+    df.loc[df.Title==policyt,"Training_Comment"] = trainingt
+
+    out.append(policyt)
+    out.append(policys)
+    out.append(policyc)
+    out.append(govs)
+    out.append(govt)
+    out.append(comms)
+    out.append(commt)
+    out.append(fiscals)
+    out.append(fiscalt)
+    out.append(stds)
+    out.append(stdt)
+    out.append(regs)
+    out.append(regt)
+    out.append(lifes)
+    out.append(lifet)
+    out.append(tests)
+    out.append(testt)
+    out.append(supps)
+    out.append(suppt)
+    out.append(procures)
+    out.append(procuret)
+    out.append(trainings)
+    out.append(trainingt)
+
+    df.to_csv(csv_path,index=False)
+
+    return out
+
+@eel.expose
+def Form_Add(policyt,policys,policyc, govt,govs,commt,comms,stdt,stds,regt,regs,fiscalt,fiscals,lifet,lifes,testt,tests,suppt,supps,procuret,procures,trainingt,trainings):
+    csv_path = resource_path(csv_relative_path)
+    
+    entry = {
+        "Title":policyt,
+        "Overall_Score":[policys],
+        "Overall_Comment":[policyc],
+        "Governance_Score":[govs],
+        "Governance_Comment":[govt],
+        "Communication_Score":[comms],
+        "Communication_Comment":[commt],
+        "Standards_Score":[stds],
+        "Standards_Comment":[stdt],
+        "Regulatory_Score":[regs],
+        "Regulatory_Comment":[regt],
+        "Fiscal_Score":[fiscals],
+        "Fiscal_Comment":[fiscalt],
+        "Lifecycle_Score":[lifes],
+        "Lifecycle_Comment":[lifet],
+        "Validation_Score":[tests],
+        "Validation_Comment":[testt],
+        "Support_Score":[supps],
+        "Support_Comment":[suppt],
+        "Procurement_Score":[procures],
+        "Procurement_Comment":[procuret],
+        "Training_Score":[trainings],
+        "Training_Comment":[trainingt],
+        "Unnamed":""
+    }
+    print(entry)
+    write_csv(csv_path,entry)
+
+
+
 # CSV Reading
 def read_csv(file_path):
     file = pd.read_csv(file_path)
@@ -135,10 +276,10 @@ def read_csv(file_path):
 def write_csv(file_path,input):
     print(input)
     df = pd.DataFrame(input)
+    df = df.replace(np.nan, "")
     # Force it to get a new line
     with open(file_path,'a') as file:
-        file.write('\n')
-    df.to_csv(file_path,mode='a',index=False,header=False)
+        df.to_csv(file_path, mode='a', index=False, header=False)
 
 # CSV Deleting by row
 def delete_csv(file_path,title):
@@ -148,6 +289,7 @@ def delete_csv(file_path,title):
     print(df)
     df.to_csv(file_path,index=False)
         
+
 
 
 
