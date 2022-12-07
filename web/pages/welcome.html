@@ -74,6 +74,7 @@
 
   async function policy_title_import(){
      var re = await eel.import_policy_title(text)();
+     alert("Import Success!")
   }
     document.querySelector("#read-button").addEventListener('click', function() {
 	if(document.querySelector("#file-input").files.length == 0) {

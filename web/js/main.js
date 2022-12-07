@@ -117,13 +117,18 @@ async function policy_title_delete()
     parent.document.getElementById("Current_Viewing_Overall_Comment").innerHTML = " ";
     // clear the other viewing field
     // clear_field(document.getElementById("Testing_Ground"))
-    const collection = document.getElementsByClassName("result");
-    for (let i = 0; i < collection.length; i++) {
-        console.log(collection[i].innerHTML);
-        if(collection[i].innerHTML == input){
-            collection[i].parentNode.removeChild(collection[i]);
-        }
+    // const collection = document.getElementsByClassName("result");
+    // for (let i = 0; i < collection.length; i++) {
+    //     console.log(collection[i].innerHTML);
+    //     if(collection[i].innerHTML == input){
+    //         collection[i].parentNode.removeChild(collection[i]);
+    //     }
+    // }
+    const myNode = parent.document.getElementById("ntest");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.lastChild);
     }
+    alert("delete success!")
 }
 
 // yet to implement populate whole list
@@ -152,7 +157,7 @@ async function policy_title_viewall()
     var list = document.createElement('table')
     list.style.border = "1px solid black"
     var row = list.insertRow(0);
-    var rowhtml = "<th>Title</th><th>Overall_Score</th><th>Overall_Comment</th><th>Governance_Score</th>"
+    var rowhtml = "<th>Select Button</th><th>Title</th><th>Overall_Score</th><th>Overall_Comment</th><th>Governance_Score</th>"
     rowhtml += "<th>Governance_Comment</th><th>Communication_Score</th><th>Communication_Comment</th><th>Standards_Score</th>"
     rowhtml += "<th>Standards_Comment</th><th>Regulatory_Score</th><th>Regulatory_Comment</th>"
     rowhtml += "<th>Fiscal_Score</th><th>Fiscal_Comment</th><th>Lifecycle_Score</th>"
@@ -175,6 +180,31 @@ async function policy_title_viewall()
         if(ou[0] === undefined){
             continue;
         }
+        const n1 = ou[0]
+        const n2 = ou[1]
+        const n3 = ou[2]
+        
+        var con = document.createElement('button')
+        var t = document.createTextNode("Policy Title:" + n1);
+        con.appendChild(t)
+        con.classList.add('btn')
+        con.classList.add('btn-primary')
+        con.classList.add('butt')
+        con.style.margin = "10px"
+        row1.appendChild(con)
+        row1.addEventListener("click", function(e){
+            document.getElementById("selected_value").innerHTML = n1;
+            parent.document.getElementById("Current_Viewing_Policy_Title").innerHTML = n1
+            parent.document.getElementById("Current_Viewing_Overall_Score").innerHTML = n2
+            parent.document.getElementById("Current_Viewing_Overall_Comment").innerHTML = n3
+        });
+        
+        // con.style.marginTop = "10px"
+        // con.setAttribute('content', output[i]);
+        
+        // var rowsp = document.createElement('td')
+        // rowsp.appendChild(con)
+        // list.appendChild(rowsp)
         var rowhtml1 = "<td>" + ou[0] + "</td>"
         rowhtml1 += "<td>" + ou[1] + "</td>"
         rowhtml1 += "<td>" + ou[2] + "</td>"
@@ -200,6 +230,7 @@ async function policy_title_viewall()
         rowhtml1 += "<td>" + ou[22] + "</td>"
         rowhtml1 += "<td>" + ou[23] + "</td>"
         row1.insertCell(0).outerHTML = rowhtml1;
+        
         row1.style.border = "1px solid black"
         // rowhtml1.style.border = "1px solid black"
 
@@ -315,7 +346,7 @@ async function Form_Submit(){
     console.log(input + "hello")
 
     var policyt = document.getElementById('policytitle').value
-    var policys = document.getElementById('policyscore').value
+    
     var policyc = document.getElementById('policycomment').value
     var govt = document.getElementById('exampleFormControlTextarea1').value
     var govs = document.getElementById('se1').value
@@ -337,14 +368,18 @@ async function Form_Submit(){
     var procures = document.getElementById('se9').value
     var trainingt = document.getElementById('exampleFormControlTextarea10').value
     var trainings = document.getElementById('se10').value
+    var policys = getavg(govs, comms, stds, regs, fiscals, lifes, tests, supps, procures, trainings)
+    console.log(policys)
 
     console.log("onsubmit_js")
     var output;
     var nput;
     if(input == ""){
         nput = await eel.Form_Add(policyt,policys,policyc,govt,govs,commt,comms,stdt,stds,regt,regs,fiscalt,fiscals,lifet,lifes,testt,tests,suppt,supps,procuret,procures,trainingt,trainings)()
+        alert("Add New Policy Success")
     }else{
         output = await eel.Form_Submit(policyt,policys,policyc,govt,govs,commt,comms,stdt,stds,regt,regs,fiscalt,fiscals,lifet,lifes,testt,tests,suppt,supps,procuret,procures,trainingt,trainings)()
+        alert("Edit Policy Success")
     }
 
     console.log(output)
@@ -390,4 +425,18 @@ function clear_field(parent){
     while(parent.firstChild){
         parent.removeChild(parent.firstChild)
     }
+}
+
+function getavg(govs, comms, stds, regs, fiscals, lifes, tests, supps, procures, trainings){
+    var ans = parseInt(govs)
+    ans += parseInt(comms)
+    ans += parseInt(stds)
+    ans += parseInt(regs)
+    ans += parseInt(fiscals)
+    ans += parseInt(lifes)
+    ans += parseInt(tests)
+    ans += parseInt(supps)
+    ans += parseInt(procures)
+    ans += parseInt(trainings)
+    return(ans/10)
 }

@@ -89,9 +89,22 @@ def get_policy_all():
     all_current_entry = read_csv(csv_path)
     result = []
     for entry in all_current_entry:
+        entry = checknan(entry)
         result.append(entry)
 
     return result
+
+def checknan(entry):
+    ans = []
+    for e in entry:
+        if e != e:
+            ans.append('')
+        else:
+            ans.append(e)
+    print(ans)
+    return ans
+
+
 
 @eel.expose
 def delete_policy_title(inputdata):
@@ -128,7 +141,7 @@ def export_policy_title(inputdata):
     result = []
     for entry in all_current_entry:
         if entry[0] == inputdata:
-            result = entry
+            result = checknan(entry)
             break
     return result
 
@@ -276,7 +289,7 @@ def read_csv(file_path):
 def write_csv(file_path,input):
     print(input)
     df = pd.DataFrame(input)
-    df = df.replace(np.nan, "")
+    df = df.replace(np.nan, '', regex=True)
     # Force it to get a new line
     with open(file_path,'a') as file:
         df.to_csv(file_path, mode='a', index=False, header=False)
